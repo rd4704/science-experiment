@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>🔬 Science Lab Adventure!</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- ============ SPLASH / HOME SCREEN ============ -->
+    <div id="screen-home" class="screen active">
+        <div class="home-bg-bubbles">
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <div class="home-content">
+            <h1 class="game-title bounce-in">🔬 Science Lab<br>Adventure!</h1>
+            <p class="subtitle fade-in">Choose your experiment!</p>
+            <div class="game-grid">
+                <button class="game-card card-chemistry" data-game="chemistry" onclick="ScienceApp.selectGame('chemistry')">
+                    <span class="card-emoji">🧪</span>
+                    <span class="card-label">Chemistry Lab</span>
+                    <span class="card-desc">Mix potions!</span>
+                </button>
+                <button class="game-card card-physics" data-game="physics" onclick="ScienceApp.selectGame('physics')">
+                    <span class="card-emoji">⚡</span>
+                    <span class="card-label">Physics Lab</span>
+                    <span class="card-desc">Build machines!</span>
+                </button>
+                <button class="game-card card-nature" data-game="nature" onclick="ScienceApp.selectGame('nature')">
+                    <span class="card-emoji">🌿</span>
+                    <span class="card-label">Nature Lab</span>
+                    <span class="card-desc">Grow things!</span>
+                </button>
+                <button class="game-card card-maze" data-game="maze" onclick="ScienceApp.selectGame('maze')">
+                    <span class="card-emoji">🏆</span>
+                    <span class="card-label">Maze Game</span>
+                    <span class="card-desc">Bonus fun!</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ INGREDIENT SELECTION SCREEN ============ -->
+    <div id="screen-ingredients" class="screen">
+        <div class="screen-header">
+            <button class="btn-back" onclick="ScienceApp.goHome()">⬅️ Back</button>
+            <h2 id="lab-title" class="lab-title">🧪 Chemistry Lab</h2>
+        </div>
+        <p class="instruction-text" id="ingredient-instruction">Pick 2-3 ingredients to mix!</p>
+        <div class="ingredients-container" id="ingredients-container">
+            <!-- Filled dynamically -->
+        </div>
+        <div class="selected-tray">
+            <h3>Your Picks:</h3>
+            <div id="selected-items" class="selected-items">
+                <!-- Filled dynamically -->
+            </div>
+        </div>
+        <button class="btn-create" id="btn-create" onclick="ScienceApp.createItem()" disabled>
+            🪄 Create!
+        </button>
+    </div>
+
+    <!-- ============ CREATION / MIXING ANIMATION SCREEN ============ -->
+    <div id="screen-creating" class="screen">
+        <div class="creating-container">
+            <div class="cauldron" id="cauldron">
+                <div class="cauldron-body">🧫</div>
+                <div class="mixing-particles" id="mixing-particles"></div>
+            </div>
+            <h2 class="creating-text" id="creating-text">Mixing...</h2>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ PLAY SCREEN ============ -->
+    <div id="screen-play" class="screen">
+        <div class="screen-header">
+            <button class="btn-back" onclick="ScienceApp.goHome()">⬅️ Home</button>
+            <h2 id="creation-title" class="lab-title">Your Creation!</h2>
+            <button class="btn-new" onclick="ScienceApp.goToIngredients()">🔄 New</button>
+        </div>
+        <div class="play-area" id="play-area">
+            <div class="creation-object" id="creation-object">
+                <!-- Created item rendered here -->
+            </div>
+        </div>
+        <div class="play-controls">
+            <button class="play-btn" onclick="ScienceApp.playAction('bounce')" data-action="bounce">
+                <span>⬆️</span> Bounce
+            </button>
+            <button class="play-btn" onclick="ScienceApp.playAction('spin')" data-action="spin">
+                <span>🔄</span> Spin
+            </button>
+            <button class="play-btn" onclick="ScienceApp.playAction('flip')" data-action="flip">
+                <span>🔃</span> Flip
+            </button>
+            <button class="play-btn" onclick="ScienceApp.playAction('shake')" data-action="shake">
+                <span>📳</span> Shake
+            </button>
+            <button class="play-btn" onclick="ScienceApp.playAction('grow')" data-action="grow">
+                <span>🔍</span> Grow
+            </button>
+            <button class="play-btn" onclick="ScienceApp.playAction('color')" data-action="color">
+                <span>🎨</span> Color
+            </button>
+        </div>
+    </div>
+
+    <!-- ============ MAZE GAME SCREEN ============ -->
+    <div id="screen-maze" class="screen">
+        <div class="screen-header">
+            <button class="btn-back" onclick="ScienceApp.goHome()">⬅️ Home</button>
+            <h2 class="lab-title">🏆 Maze Adventure!</h2>
+            <button class="btn-new" onclick="MazeGame.generateNew()">🔄 New Maze</button>
+        </div>
+        <div class="maze-info">
+            <span id="maze-timer" class="maze-stat">⏱️ 0s</span>
+            <span id="maze-moves" class="maze-stat">👣 0 moves</span>
+            <div class="maze-difficulty">
+                <button class="diff-btn active" onclick="MazeGame.setDifficulty('easy')" data-diff="easy">😊 Easy</button>
+                <button class="diff-btn" onclick="MazeGame.setDifficulty('medium')" data-diff="medium">🤔 Medium</button>
+                <button class="diff-btn" onclick="MazeGame.setDifficulty('hard')" data-diff="hard">😈 Hard</button>
+            </div>
+        </div>
+        <div class="maze-wrapper">
+            <canvas id="maze-canvas"></canvas>
+        </div>
+        <div class="maze-controls">
+            <div class="dpad">
+                <button class="dpad-btn dpad-up" ontouchstart="MazeGame.move('up')" onmousedown="MazeGame.move('up')">⬆️</button>
+                <button class="dpad-btn dpad-left" ontouchstart="MazeGame.move('left')" onmousedown="MazeGame.move('left')">⬅️</button>
+                <button class="dpad-btn dpad-right" ontouchstart="MazeGame.move('right')" onmousedown="MazeGame.move('right')">➡️</button>
+                <button class="dpad-btn dpad-down" ontouchstart="MazeGame.move('down')" onmousedown="MazeGame.move('down')">⬇️</button>
+            </div>
+        </div>
+        <!-- Drawing overlay for maze -->
+        <div class="maze-draw-toggle">
+            <button class="draw-toggle-btn" id="draw-toggle" onclick="MazeGame.toggleDraw()">✏️ Draw Mode</button>
+            <div class="draw-colors" id="draw-colors" style="display:none;">
+                <button class="color-dot" style="background:#FF6B6B" onclick="MazeGame.setDrawColor('#FF6B6B')"></button>
+                <button class="color-dot" style="background:#4ECDC4" onclick="MazeGame.setDrawColor('#4ECDC4')"></button>
+                <button class="color-dot" style="background:#FFE66D" onclick="MazeGame.setDrawColor('#FFE66D')"></button>
+                <button class="color-dot" style="background:#A78BFA" onclick="MazeGame.setDrawColor('#A78BFA')"></button>
+                <button class="color-dot" style="background:#FF85A2" onclick="MazeGame.setDrawColor('#FF85A2')"></button>
+                <button class="eraser-btn" onclick="MazeGame.clearDrawing()">🧹 Clear</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ WIN / CELEBRATION SCREEN ============ -->
+    <div id="screen-win" class="screen">
+        <div class="win-content">
+            <h1 class="win-title">🎉 You Did It! 🎉</h1>
+            <div class="win-stars">⭐⭐⭐</div>
+            <p class="win-message" id="win-message">Amazing work, little scientist!</p>
+            <div class="confetti-container" id="confetti-container"></div>
+            <button class="btn-play-again" onclick="ScienceApp.goHome()">🏠 Play Again!</button>
+        </div>
+    </div>
+
+    <script src="js/sounds.js"></script>
+    <script src="js/experiments.js"></script>
+    <script src="js/maze.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
