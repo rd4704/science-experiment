@@ -34,10 +34,20 @@
                     <span class="card-label">Nature Lab</span>
                     <span class="card-desc">Grow things!</span>
                 </button>
+                <button class="game-card card-dessert" data-game="dessert" onclick="ScienceApp.selectGame('dessert')">
+                    <span class="card-emoji">🍰</span>
+                    <span class="card-label">Dessert Kitchen</span>
+                    <span class="card-desc">Bake treats!</span>
+                </button>
                 <button class="game-card card-maze" data-game="maze" onclick="ScienceApp.selectGame('maze')">
                     <span class="card-emoji">🏆</span>
                     <span class="card-label">Maze Game</span>
                     <span class="card-desc">Bonus fun!</span>
+                </button>
+                <button class="game-card card-tictactoe" data-game="tictactoe" onclick="ScienceApp.selectGame('tictactoe')">
+                    <span class="card-emoji">⭕</span>
+                    <span class="card-label">Tic-Tac-Toe</span>
+                    <span class="card-desc">Bonus game!</span>
                 </button>
             </div>
         </div>
@@ -164,9 +174,34 @@
         </div>
     </div>
 
+    <!-- ============ TIC-TAC-TOE SCREEN ============ -->
+    <div id="screen-tictactoe" class="screen">
+        <div class="screen-header">
+            <button class="btn-back" onclick="ScienceApp.goHome()">⬅️ Home</button>
+            <h2 class="lab-title">⭕ Tic-Tac-Toe!</h2>
+            <button class="btn-new" onclick="TicTacToe.newGame()">🔄 New</button>
+        </div>
+        <div class="ttt-mode-bar">
+            <button class="ttt-mode-btn active" data-mode="computer" onclick="TicTacToe.setMode('computer')">
+                🤖 vs Computer
+            </button>
+            <button class="ttt-mode-btn" data-mode="2player" onclick="TicTacToe.setMode('2player')">
+                👫 2 Players
+            </button>
+        </div>
+        <div class="ttt-scores" id="ttt-scores">🧑‍🔬 0 - 0 - 0 🤖</div>
+        <p class="ttt-status" id="ttt-status">🧑‍🔬 Player 1's turn</p>
+        <div class="ttt-board-wrapper">
+            <div class="ttt-board" id="ttt-board">
+                <!-- 9 cells rendered by JS -->
+            </div>
+        </div>
+    </div>
+
     <script src="js/sounds.js"></script>
     <script src="js/experiments.js"></script>
     <script src="js/maze.js"></script>
+    <script src="js/tictactoe.js"></script>
     <script src="js/app.js"></script>
 </body>
 </html>

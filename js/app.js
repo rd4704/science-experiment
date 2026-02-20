@@ -4,7 +4,7 @@
    ============================================ */
 
 const ScienceApp = (() => {
-    let currentGame = null;      // 'chemistry', 'physics', 'nature', 'maze'
+    let currentGame = null;      // 'chemistry', 'physics', 'nature', 'dessert', 'maze', 'tictactoe'
     let selectedIngredients = []; // array of ingredient ids
     let currentCreation = null;  // { emoji, name, desc }
     let isDragging = false;
@@ -34,6 +34,12 @@ const ScienceApp = (() => {
         if (game === 'maze') {
             showScreen('screen-maze');
             MazeGame.start();
+            return;
+        }
+
+        if (game === 'tictactoe') {
+            showScreen('screen-tictactoe');
+            TicTacToe.start();
             return;
         }
 

@@ -1,6 +1,6 @@
 /* ============================================
    EXPERIMENTS - Ingredient & Creation Data
-   Chemistry, Physics, and Nature labs
+   Chemistry, Physics, Nature, and Dessert labs
    ============================================ */
 
 const ExperimentData = (() => {
@@ -106,6 +106,41 @@ const ExperimentData = (() => {
         { ingredients: ['mushroom', 'crystal', 'rain'],result: { emoji: '🧙', name: 'Forest Wizard', desc: 'Magic powers!' } },
     ];
 
+    // --- DESSERT KITCHEN ---
+    const dessertIngredients = [
+        { id: 'flour',     emoji: '🌾', name: 'Flour' },
+        { id: 'sugar',     emoji: '🍬', name: 'Sugar' },
+        { id: 'chocolate', emoji: '🍫', name: 'Chocolate' },
+        { id: 'strawberry',emoji: '🍓', name: 'Strawberry' },
+        { id: 'cream',     emoji: '🥛', name: 'Cream' },
+        { id: 'egg_d',     emoji: '🥚', name: 'Egg' },
+        { id: 'butter',    emoji: '🧈', name: 'Butter' },
+        { id: 'sprinkles', emoji: '🎊', name: 'Sprinkles' },
+        { id: 'cherry',    emoji: '🍒', name: 'Cherry' },
+    ];
+
+    const dessertRecipes = [
+        { ingredients: ['flour', 'sugar'],          result: { emoji: '🍪', name: 'Cookie', desc: 'Crunchy and sweet!' } },
+        { ingredients: ['flour', 'chocolate'],      result: { emoji: '🍩', name: 'Donut', desc: 'Yummy ring of joy!' } },
+        { ingredients: ['flour', 'egg_d'],          result: { emoji: '🥞', name: 'Pancake', desc: 'Fluffy and warm!' } },
+        { ingredients: ['chocolate', 'cream'],      result: { emoji: '🍫', name: 'Choco Mousse', desc: 'So creamy!' } },
+        { ingredients: ['strawberry', 'cream'],     result: { emoji: '🍰', name: 'Strawberry Cake', desc: 'Pretty in pink!' } },
+        { ingredients: ['cream', 'sugar'],          result: { emoji: '🍦', name: 'Ice Cream', desc: 'Cold and sweet!' } },
+        { ingredients: ['butter', 'sugar'],         result: { emoji: '🧁', name: 'Cupcake', desc: 'Cute little cake!' } },
+        { ingredients: ['chocolate', 'strawberry'], result: { emoji: '🍓', name: 'Choco Strawberry', desc: 'Dipped in yum!' } },
+        { ingredients: ['sprinkles', 'cream'],      result: { emoji: '🎂', name: 'Party Cake', desc: 'Happy birthday!' } },
+        { ingredients: ['cherry', 'cream'],         result: { emoji: '🍨', name: 'Sundae', desc: 'Cherry on top!' } },
+        { ingredients: ['butter', 'flour'],         result: { emoji: '🥐', name: 'Croissant', desc: 'Flaky and golden!' } },
+        { ingredients: ['egg_d', 'sugar'],          result: { emoji: '🍮', name: 'Pudding', desc: 'Wibbly wobbly!' } },
+        { ingredients: ['cherry', 'chocolate'],     result: { emoji: '🍭', name: 'Lollipop', desc: 'Lick lick lick!' } },
+        { ingredients: ['sprinkles', 'chocolate'],  result: { emoji: '🍿', name: 'Choco Pop', desc: 'Pop pop pop!' } },
+        // 3-ingredient recipes
+        { ingredients: ['flour', 'sugar', 'chocolate'],    result: { emoji: '🎂', name: 'Birthday Cake', desc: 'Make a wish!' } },
+        { ingredients: ['flour', 'egg_d', 'butter'],       result: { emoji: '🥧', name: 'Pie', desc: 'Golden and warm!' } },
+        { ingredients: ['cream', 'strawberry', 'sprinkles'],result: { emoji: '🧁', name: 'Unicorn Cupcake', desc: 'Magical treat!' } },
+        { ingredients: ['chocolate', 'cream', 'cherry'],   result: { emoji: '🍫', name: 'Choco Deluxe', desc: 'Triple yum!' } },
+    ];
+
     // --- FIND RECIPE ---
     function findRecipe(labType, selectedIds) {
         const recipes = getRecipes(labType);
@@ -151,6 +186,11 @@ const ExperimentData = (() => {
                 { emoji: '🌵', name: 'Cactus Friend', desc: 'Spikey but happy!' },
                 { emoji: '🐌', name: 'Snaily', desc: 'Slow but cute!' },
                 { emoji: '🍁', name: 'Golden Leaf', desc: 'Autumn magic!' },
+            ],
+            dessert: [
+                { emoji: '🍡', name: 'Mystery Dango', desc: 'Squishy surprise!' },
+                { emoji: '🧇', name: 'Waffle', desc: 'Crispy creation!' },
+                { emoji: '🍩', name: 'Mystery Donut', desc: 'What flavour?' },
             ]
         };
         const list = surprises[labType] || surprises.chemistry;
@@ -162,6 +202,7 @@ const ExperimentData = (() => {
             case 'chemistry': return chemistryIngredients;
             case 'physics':   return physicsIngredients;
             case 'nature':    return natureIngredients;
+            case 'dessert':   return dessertIngredients;
             default:          return chemistryIngredients;
         }
     }
@@ -171,6 +212,7 @@ const ExperimentData = (() => {
             case 'chemistry': return chemistryRecipes;
             case 'physics':   return physicsRecipes;
             case 'nature':    return natureRecipes;
+            case 'dessert':   return dessertRecipes;
             default:          return chemistryRecipes;
         }
     }
@@ -197,6 +239,13 @@ const ExperimentData = (() => {
                 background: 'linear-gradient(135deg, #95E06C 0%, #56AB2F 100%)',
                 mixText: 'Growing...',
                 createText: 'Sprouting...',
+            },
+            dessert: {
+                title: '🍰 Dessert Kitchen',
+                instruction: 'Pick 2-3 ingredients to bake!',
+                background: 'linear-gradient(135deg, #FF9A9E 0%, #FECFEF 100%)',
+                mixText: 'Baking...',
+                createText: 'Decorating...',
             }
         };
         return configs[labType] || configs.chemistry;
