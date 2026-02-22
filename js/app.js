@@ -43,6 +43,12 @@ const ScienceApp = (() => {
             return;
         }
 
+        if (game === 'rps') {
+            showScreen('screen-rps');
+            RPSGame.start();
+            return;
+        }
+
         // Show ingredients screen
         selectedIngredients = [];
         setupIngredientsScreen(game);

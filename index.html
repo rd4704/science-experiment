@@ -49,6 +49,11 @@
                     <span class="card-label">Tic-Tac-Toe</span>
                     <span class="card-desc">Bonus game!</span>
                 </button>
+                <button class="game-card card-rps" data-game="rps" onclick="ScienceApp.selectGame('rps')">
+                    <span class="card-emoji">✊</span>
+                    <span class="card-label">Rock Paper Scissors</span>
+                    <span class="card-desc">Beat the computer!</span>
+                </button>
             </div>
         </div>
     </div>
@@ -198,10 +203,49 @@
         </div>
     </div>
 
+    <!-- ============ ROCK PAPER SCISSORS SCREEN ============ -->
+    <div id="screen-rps" class="screen">
+        <div class="screen-header">
+            <button class="btn-back" onclick="ScienceApp.goHome()">⬅️ Home</button>
+            <h2 class="lab-title">✊ Rock Paper Scissors</h2>
+            <button class="btn-new" onclick="RPSGame.newGame()">🔄 Reset</button>
+        </div>
+        <div class="rps-scoreboard" id="rps-scoreboard">🧑‍🔬 0  -  0  -  0 🤖</div>
+        <div class="rps-streak" id="rps-streak" style="display:none">🔥 0 win streak!</div>
+        <div class="rps-round" id="rps-round">Round 1</div>
+        <div class="rps-arena" id="rps-arena">
+            <div class="rps-side rps-player-side">
+                <div class="rps-label">🧑‍🔬 You</div>
+                <div class="rps-choice" id="rps-player-choice">❓</div>
+            </div>
+            <div class="rps-vs" id="rps-vs">VS</div>
+            <div class="rps-side rps-computer-side">
+                <div class="rps-label">🤖 Computer</div>
+                <div class="rps-choice" id="rps-computer-choice">❓</div>
+            </div>
+        </div>
+        <p class="rps-result" id="rps-result">Pick your move!</p>
+        <div class="rps-buttons">
+            <button class="rps-btn rps-btn-rock" onclick="RPSGame.play('rock')">
+                <span class="rps-btn-emoji">🪨</span>
+                <span class="rps-btn-label">Rock</span>
+            </button>
+            <button class="rps-btn rps-btn-paper" onclick="RPSGame.play('paper')">
+                <span class="rps-btn-emoji">📄</span>
+                <span class="rps-btn-label">Paper</span>
+            </button>
+            <button class="rps-btn rps-btn-scissors" onclick="RPSGame.play('scissors')">
+                <span class="rps-btn-emoji">✂️</span>
+                <span class="rps-btn-label">Scissors</span>
+            </button>
+        </div>
+    </div>
+
     <script src="js/sounds.js"></script>
     <script src="js/experiments.js"></script>
     <script src="js/maze.js"></script>
     <script src="js/tictactoe.js"></script>
+    <script src="js/rps.js"></script>
     <script src="js/app.js"></script>
 </body>
 </html>
