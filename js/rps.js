@@ -54,8 +54,11 @@ const RPSGame = (() => {
         // Shake animation - cycle through emojis quickly
         const shakeEmojis = ['🪨', '📄', '✂️'];
         let tick = 0;
+        let playerRevealed = false;
         const shakeInterval = setInterval(() => {
-            playerEl.textContent = shakeEmojis[tick % 3];
+            if (!playerRevealed) {
+                playerEl.textContent = shakeEmojis[tick % 3];
+            }
             computerEl.textContent = shakeEmojis[(tick + 1) % 3];
             tick++;
             if (tick % 3 === 0) SoundFX.tap();
@@ -63,6 +66,7 @@ const RPSGame = (() => {
 
         // Show player choice after short delay
         setTimeout(() => {
+            playerRevealed = true;
             playerEl.textContent = emojis[playerChoice];
             playerEl.classList.add('rps-reveal');
             SoundFX.pop();
