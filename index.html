@@ -54,6 +54,16 @@
                     <span class="card-label">Rock Paper Scissors</span>
                     <span class="card-desc">Beat the computer!</span>
                 </button>
+                <button class="game-card card-counting" data-game="counting" onclick="ScienceApp.selectGame('counting')">
+                    <span class="card-emoji">🦄</span>
+                    <span class="card-label">Count with Unicorns</span>
+                    <span class="card-desc">Learn 1-20!</span>
+                </button>
+                <button class="game-card card-alphabet" data-game="alphabet" onclick="ScienceApp.selectGame('alphabet')">
+                    <span class="card-emoji">🌈</span>
+                    <span class="card-label">Rainbow ABCs</span>
+                    <span class="card-desc">Learn A-Z!</span>
+                </button>
             </div>
         </div>
     </div>
@@ -241,11 +251,43 @@
         </div>
     </div>
 
+    <!-- ============ COUNTING GAME SCREEN ============ -->
+    <div id="screen-counting" class="screen">
+        <div class="screen-header">
+            <button class="btn-back" onclick="ScienceApp.goHome()">⬅️ Home</button>
+            <h2 class="lab-title">🦄 Count with Unicorns!</h2>
+            <span class="game-score" id="counting-score">⭐ 0</span>
+        </div>
+        <div class="counting-progress-bar">
+            <div class="counting-progress-fill" id="counting-progress"></div>
+        </div>
+        <div class="counting-game-area" id="counting-game-area">
+            <!-- Filled dynamically -->
+        </div>
+    </div>
+
+    <!-- ============ ALPHABET GAME SCREEN ============ -->
+    <div id="screen-alphabet" class="screen">
+        <div class="screen-header">
+            <button class="btn-back" onclick="ScienceApp.goHome()">⬅️ Home</button>
+            <h2 class="lab-title">🌈 Rainbow ABCs!</h2>
+            <span class="game-score" id="alphabet-score">⭐ 0</span>
+        </div>
+        <div class="counting-progress-bar">
+            <div class="counting-progress-fill" id="alphabet-progress"></div>
+        </div>
+        <div class="alphabet-game-area" id="alphabet-game-area">
+            <!-- Filled dynamically -->
+        </div>
+    </div>
+
     <script src="js/sounds.js?v=2"></script>
     <script src="js/experiments.js?v=2"></script>
     <script src="js/maze.js?v=2"></script>
     <script src="js/tictactoe.js?v=2"></script>
     <script src="js/rps.js?v=2"></script>
+    <script src="js/counting.js?v=2"></script>
+    <script src="js/alphabet.js?v=2"></script>
     <script src="js/app.js?v=2"></script>
 </body>
 </html>

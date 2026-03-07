@@ -49,6 +49,18 @@ const ScienceApp = (() => {
             return;
         }
 
+        if (game === 'counting') {
+            showScreen('screen-counting');
+            CountingGame.start();
+            return;
+        }
+
+        if (game === 'alphabet') {
+            showScreen('screen-alphabet');
+            AlphabetGame.start();
+            return;
+        }
+
         // Show ingredients screen
         selectedIngredients = [];
         setupIngredientsScreen(game);
