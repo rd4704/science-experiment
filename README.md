@@ -1,6 +1,6 @@
-# 🔬 Science Lab Adventure!
+# 🌟 Wonder Lab - Play & Learn!
 
-A fun, interactive science experiment game for Primary 1 students (ages 6-7). Built as a fully static web app — no build tools or dependencies needed!
+A fun, interactive learning and play hub for young kids (ages 3-7). Built as a fully static web app — no build tools or dependencies needed!
 
 ## 🎮 Games Included
 

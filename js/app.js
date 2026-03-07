@@ -1,5 +1,5 @@
 /* ============================================
-   SCIENCE APP - Main Game Logic
+   WONDER LAB - Main Game Logic
    Screen management, creation flow, play actions
    ============================================ */
 
@@ -370,7 +370,7 @@ const ScienceApp = (() => {
     // --- WIN SCREEN ---
     function showWin(message) {
         showScreen('screen-win');
-        document.getElementById('win-message').textContent = message || 'Amazing work, little scientist!';
+        document.getElementById('win-message').textContent = message || 'Amazing work, little explorer!';
         spawnConfetti();
         SoundFX.win();
     }

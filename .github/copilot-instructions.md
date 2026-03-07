@@ -1,4 +1,4 @@
-# Science Experiment Game - Copilot Instructions
+# Wonder Lab - Copilot Instructions
 
 ## Project Type
 Static web application (HTML/CSS/JavaScript) - No build tools required.
